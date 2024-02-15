@@ -1,0 +1,239 @@
+@charset "utf-8";
+
+//das color palette
+$ggi-red: #C02026;
+$ggi-blue: #0F7BA0;
+$ggi-grey: #3A3A3C;
+
+:root {
+    --font-family: Calibri, Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+:not([class*="pi "]) {
+    font-family: var(--font-family) !important;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: var(--surface-d);
+}
+
+.p-button {
+    background-color: $ggi-blue;
+    border-color: $ggi-blue;
+}
+
+.p-button:hover:not(
+    .p-button-secondary,
+    .p-button-success,
+    .p-button-info,
+    .p-button-warning,
+    .p-button-help,
+    .p-button-danger,
+    .p-button-text
+) {
+    background-color: darken($ggi-blue, 5%) !important;
+    border-color: darken($ggi-blue, 5%) !important;
+    color: white !important;
+}
+
+span .p-highlight {
+    background-color: $ggi-blue !important;
+    border-color: $ggi-blue !important;
+    color: white !important;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page, .p-paginator-icon {
+    color: $ggi-blue;
+}
+
+.p-menubar {
+    border-radius: 0;
+    border-style: none;
+    background-color: $ggi-red;
+    
+}
+
+.p-menuitem-link {
+    color: white !important;
+}
+
+.ggi-nav-item > a span {
+    color: white !important;
+    font-weight: bold !important;
+}
+
+.ggi-nav-item > * .p-menuitem-link {
+    font-weight: bold;
+}
+
+.p-splitbutton-defaultbutton {
+    margin: 0 !important;
+}
+
+.p-splitbutton-menubutton {
+    margin: 0 !important;
+    padding-right: 0.5em !important;
+    padding-left: 0.5em !important;
+}
+
+.button-ggi-blue, 
+.button-ggi-blue button {
+    background-color: $ggi-blue;
+    border-color: $ggi-blue;
+    border-radius: 4px;
+}
+
+.button-ggi-grey, 
+.button-ggi-grey button {
+    background-color: $ggi-grey;
+    border-color: $ggi-grey;
+    border-radius: 4px;
+}
+
+.button-ggi-blue:hover, 
+.button-ggi-blue button:hover {
+    background-color: darken($ggi-blue, 5%) !important;
+    border-color: darken($ggi-blue, 5%) !important;
+}
+
+.button-ggi-grey:hover, 
+.button-ggi-grey button:hover {
+    background-color: darken($ggi-grey, 5%) !important;
+    border-color: darken($ggi-grey, 5%) !important;
+}
+
+.ggi-nav-item > a:hover,
+.ggi-nav-item.p-menuitem-active > .p-menuitem-link {
+    background-color: darken($ggi-blue, 5%) !important;
+    border-color: darken($ggi-blue, 5%) !important;
+}
+.p-toast-detail, .p-confirm-dialog-message  {
+    white-space: pre-wrap;
+}
+
+.bg-ggi-red {
+    background-color: $ggi-red;
+}
+
+.p-tabview-panel, .p-tabview-panels {
+    background-color: var(--surface-d) !important;
+}
+
+.p-datatable .p-datatable-thead > tr > th, .p-datatable-header {
+    background-color: $ggi-red !important;
+    color: white !important;
+    font-weight: bold;
+}
+
+.p-column-header-content > * {
+    color: white !important;
+}
+
+.p-tabview-nav {
+    background-color: white !important;
+    border: 1px solid #dee2e6 !important;
+    border-width: 0 0 2px 0 !important;
+}
+
+.p-tabview-nav-link {
+    border-bottom: 2px solid lightgrey !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.p-tabview-nav-link:hover {
+    color: $ggi-grey !important;
+    border-bottom: 2px solid $ggi-grey !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+.p-highlight > .p-tabview-nav-link {
+    color: $ggi-blue !important;
+    border-bottom: 2px solid $ggi-blue !important;
+}
+
+.p-home-panel > * .p-panel-content {
+    padding: 0 !important;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-ggi-red {
+    color: $ggi-red;
+}
+
+.p-blockui {
+    opacity: 0;
+}
+
+.p-tag-ggi-grey {
+    background-color: $ggi-grey;
+}
+
+.p-tag {
+    white-space: nowrap;
+}
+
+.login-logo {
+    width: 50% !important;
+}
+
+.p-radiobutton .p-radiobutton-box.p-highlight {
+    border-color: $ggi-blue;
+    background: $ggi-blue;
+} 
+
+.p-checkbox-box.p-highlight {
+    border-color: $ggi-blue !important;
+    background: $ggi-blue !important;
+}
+
+.p-datatable .p-datatable-tbody > tr.p-highlight {
+    background: $ggi-blue;
+}
+
+.tag-count {
+    background: $ggi-blue;
+}
+
+.p-column-filter-row .p-column-filter-menu-button,
+.p-column-filter-row .p-column-filter-clear-button {
+    color: white;
+}
+
+.p-column-filter-menu-button.p-column-filter-menu-button-active, 
+.p-column-filter-menu-button.p-column-filter-menu-button-active:hover {
+    background: $ggi-blue;
+}
+
+.p-column-filter-overlay .p-column-filter-row-items .p-column-filter-row-item.p-highlight {
+    background: $ggi-blue;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    background: $ggi-blue;
+}
+
+
+@keyframes p-progress-spinner-color {
+    100%,
+    0% {
+        stroke: $ggi-red;
+    }
+    50% {
+        stroke: $ggi-blue;
+    }
+}
+
+// @import '../../../node_modules/primevue/resources/themes/saga-blue/theme.css';
+@import '../../../node_modules/primevue/resources/themes/bootstrap4-light-blue/theme.css';
+@import 'http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext';

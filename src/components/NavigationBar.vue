@@ -1,0 +1,296 @@
+<!-- <template>
+    <div class="sidebar">
+        <PanelMenu :model="items" multiple />
+        <SplitButton :label="fullname" icon="pi pi-user" :model="splitMenu" class="absolute bottom-0" style="width: 200px;"
+        @click="goToProfile()" />
+    </div>
+</template>
+
+<script>
+
+import PanelMenu from 'primevue/panelmenu';
+import SplitButton from 'primevue/splitbutton';
+// THIS IS NOT USED DO NOT USE THIS NAVIGATION BAR
+
+export default {
+    name: 'NavigationBar',
+    components: { PanelMenu, SplitButton },
+    data() {
+        return {
+            fullname: null,
+            items: [
+            {
+                    label: 'Home',
+                    icon: 'pi pi-home',
+                    to: '/',
+                },
+                {
+                    label: 'Customer Forms',
+                    visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                    icon: 'pi pi-fw pi-user',
+                    class: 'ggi-nav-item',
+                    items: [
+                        {
+                            label: 'Pemasangan & Pemutusan Internet',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-wifi',
+                            to: '/Form/Internet',
+                            class: 'ggi-nav-item',
+                        },
+
+                        {
+                            label: 'Pengajuan Izin Kerja',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-fw pi-briefcase',
+                            to: '/Form/IzinKerja',
+                            class: 'ggi-nav-item',
+                        },
+                        {
+                            label: 'Form Keluhan Pelanggan',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-comments',
+                            to: '/Form/CC',
+                            class: 'ggi-nav-item '
+                        },
+                        {
+                            label: 'Form Refund Deposit Renovasi Estate',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-fw pi-money-bill',
+                            to: '/Form/RefundDeposit',
+                            class: 'ggi-nav-item '
+                        },
+                        {
+                            label: 'Data Pemilik/Penghuni/ Warga Pindah',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-fw pi-send',
+                            to: '/Form/DataPindah',
+                            class: 'ggi-nav-item '
+                        },
+                        {
+                            label: 'Data Penyewa/Penghuni/ Warga Baru',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-fw pi-file-export',
+                            to: '/Form/DataBaru',
+                            class: 'ggi-nav-item '
+                        },
+                        {
+                            label: 'Surat Pernyataan Warga Pengerjaan Renovasi',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-fw pi-info',
+                            to: '/Form/SuratPernyataan',
+                            class: 'ggi-nav-item '
+                        },
+                    ]
+                },
+                {
+                    label: 'Admin Forms',
+                    visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                    icon: 'pi pi-fw pi-user',
+                    class: 'ggi-nav-item',
+                    items: [
+                        {
+                            label: 'Formulir Jadwal Pengecekan Akhir Pembangunan / Renovasi',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-fw pi-check-square',
+                            to: '/Form/PengecekanAkhir',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Pemesanan Kartu Akses Masuk',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-fw pi-reply',
+                            to: '/Form/PemesananKartu',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Perpanjangan Kartu Akses',
+                            visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
+                            icon: 'pi pi-fw pi-forward',
+                            to: '/Form/PerpanjanganKartu',
+                            class: 'ggi-nav-item'
+                        },
+                    ]
+                },
+                {
+                    label: 'Marchand Forms',
+                    visible: this.role('superadmin'),
+                    icon: 'pi pi-fw pi-user',
+                    class: 'ggi-nav-item',
+                    items: [
+                        {
+                            label: 'Pemasangan & Pemutusan Internet',
+                            visible: this.role('superadmin'),
+                            icon: 'pi pi-wifi',
+                            to: '/Marchand/Internet',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Form Keluhan Pelanggan',
+                            visible: this.role('superadmin'),
+                            icon: 'pi pi-fw pi-comments',
+                            to: '/Marchand/CC',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Pengajuan Izin Kerja',
+                            visible: this.role('superadmin'),
+                            icon: 'pi pi-fw pi-cog',
+                            to: '/Marchand/IzinKerja',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Surat Permohonan Izin Buka Toko',
+                            visible: this.role('superadmin'),
+                            icon: 'pi pi-fw pi-cog',
+                            to: '/Marchand/IzinBukaToko',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Form Permohonan Penambahan Daya Listrik',
+                            visible: this.role('superadmin'),
+                            icon: 'pi pi-fw pi-bolt',
+                            to: '/Marchand/DayaListrik',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Form Pengajuan Refund Deposit Fit Out',
+                            visible: this.role('superadmin'),
+                            icon: 'pi pi-money-bill',
+                            to: '/Marchand/RDP',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Form Berita Acara Pengembalian Security Deposit Fitout',
+                            visible: this.role('superadmin'),
+                            icon: 'pi pi-fw pi-pound',
+                            to: '/Marchand/PengambilanRefund',
+                            class: 'ggi-nav-item'
+                        },
+                    ]
+                },
+                // Marchand Navigation
+                {
+                    label: 'Customer Forms',
+                    visible: this.role('marchandAdmin'),
+                    icon: 'pi pi-fw pi-user',
+                    class: 'ggi-nav-item',
+                    items: [
+                        {
+                            label: 'Pemasangan & Pemutusan Internet',
+                            visible: this.role('marchandAdmin'),
+                            icon: 'pi pi-wifi',
+                            to: '/Marchand/Internet',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Form Keluhan Pelanggan',
+                            visible: this.role('marchandAdmin'),
+                            icon: 'pi pi-fw pi-comments',
+                            to: '/Marchand/CC',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Form Pengajuan Izin Kerja',
+                            visible: this.role('marchandAdmin'),
+                            icon: 'pi pi-fw pi-cog',
+                            to: '/Marchand/IzinKerja',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Form Permohonan Penambahan Daya Listrik',
+                            visible: this.role('marchandAdmin'),
+                            icon: 'pi pi-fw pi-bolt',
+                            to: '/Marchand/DayaListrik',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Form Pengajuan Refund Deposit Fit Out',
+                            visible: this.role('marchandAdmin'),
+                            icon: 'pi pi-money-bill',
+                            to: '/Marchand/RDP',
+                            class: 'ggi-nav-item'
+                        },
+                    ]
+                },
+                {
+                    label: 'Admin Forms',
+                    visible: this.role('marchandAdmin'),
+                    icon: 'pi pi-fw pi-user',
+                    class: 'ggi-nav-item',
+                    items: [
+                        {
+                            label: 'Surat Permohonan Izin Buka Toko',
+                            visible: this.role('marchandAdmin'),
+                            icon: 'pi pi-fw pi-cog',
+                            to: '/Marchand/IzinBukaToko',
+                            class: 'ggi-nav-item'
+                        },
+                        {
+                            label: 'Form Berita Acara Pengembalian Security Deposit Fitout',
+                            visible: this.role('marchandAdmin'),
+                            icon: 'pi pi-fw pi-pound',
+                            to: '/Marchand/PengambilanRefund',
+                            class: 'ggi-nav-item'
+                        },
+                    ]
+                },
+                {
+                    label: 'Setting',
+                    visible: this.role('superadmin'),
+                    icon: 'pi pi-fw pi-cog',
+                    class: 'ggi-nav-item',
+                    items: [
+                        {
+                            visible: this.role('superadmin'),
+                            label: 'Internet Setting',
+                            icon: 'pi pi-wifi',
+                            to: '/setting/internetSetting'
+                        },
+                        {
+                            visible: this.role('superadmin'),
+                            label: 'User Setting',
+                            icon: 'pi pi-fw pi-user',
+                            to: '/setting/userSetting'
+                        },
+                    ]
+                },
+            ],
+            splitMenu: [
+                {
+                    label: 'Profile',
+                    icon: '',
+                    to: '/profile'
+
+                },
+                {
+                    separator: true
+                },
+                {
+                    label: 'Sign Out',
+                    icon: 'pi pi-sign-out',
+                    command: () => this.handleLogout()
+                }
+            ],
+        };
+    },
+    methods: {
+        handleLogout() {
+            this.$router.push({ name: 'Login' });
+            this.$store.commit('logout');
+        },
+        role(role) {
+            return this.$store.getters.getRole === role;
+
+        },
+        goToProfile() {
+            this.$router.push({ name: 'profile' });
+        },
+        goToInternet() {
+            this.$router.push({ name: 'internetSetting' });
+        }
+    },
+    mounted() {
+        this.fullname = this.$store.getters.getUser.fullname;
+    },
+};
+</script> -->
