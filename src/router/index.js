@@ -14,7 +14,7 @@ const routes = [
     component: () => import('../views/internet/InternetForm.vue')
   },
   {
-    path: '/Form/IzinKerja',
+    path: '/VueDeployment/Form/IzinKerja',
     name: 'mazentaIzinKerja',
     component: () => import('../views/izinKerja/IzinKerjaForm.vue')
   },

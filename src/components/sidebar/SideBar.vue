@@ -37,7 +37,7 @@ export default {
                             label: 'Pengajuan Izin Kerja',
                             visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
                             icon: 'pi pi-fw pi-briefcase',
-                            to: '/Form/IzinKerja',
+                            click: () => this.$router.push('/VueDeployment/Form/IzinKerja'),
                             class: 'ggi-nav-item',
                         },
                         {
