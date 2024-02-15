@@ -17,7 +17,7 @@ export default {
                 {
                     label: 'Home',
                     icon: 'pi pi-home',
-                    to: '/',
+                    click: () => this.$router.push('/'),
                 },
                 {
                     label: this.getFormLabelCustomer(),
@@ -29,7 +29,7 @@ export default {
                             label: 'Pemasangan & Pemutusan Internet',
                             visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
                             icon: 'pi pi-wifi',
-                            to: '/Form/Internet',
+                            click: () => this.$router.push('/Form/Internet'),
                             class: 'ggi-nav-item',
                         },
 
