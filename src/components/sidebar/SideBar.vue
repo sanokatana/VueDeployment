@@ -17,7 +17,7 @@ export default {
                 {
                     label: 'Home',
                     icon: 'pi pi-home',
-                    click: () => this.$router.push('/'),
+                    to: '/',
                 },
                 {
                     label: this.getFormLabelCustomer(),
@@ -29,7 +29,7 @@ export default {
                             label: 'Pemasangan & Pemutusan Internet',
                             visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
                             icon: 'pi pi-wifi',
-                            click: () => this.$router.push('/Form/Internet'),
+                            to: '/Form/Internet',
                             class: 'ggi-nav-item',
                         },
 
@@ -37,7 +37,7 @@ export default {
                             label: 'Pengajuan Izin Kerja',
                             visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
                             icon: 'pi pi-fw pi-briefcase',
-                            click: () => this.$router.push('/VueDeployment/Form/IzinKerja'),
+                            to: '/Form/IzinKerja',
                             class: 'ggi-nav-item',
                         },
                         {
@@ -334,6 +334,16 @@ export default {
         };
     },
     methods: {
+        handleMenuClick(item) {
+            if (item.$routerLink) {
+                // If the item has a router link, use it to navigate
+                this.$router.push(item.$routerLink);
+            } else if (item.to) {
+                // If the item has a 'to' property, use it to navigate
+                this.$router.push(item.to);
+            }
+            // Add additional conditions if needed
+        },
         getFormLabelCustomer() {
             if (this.role('superadmin')) {
                 return 'Customer Forms Mazenta/Banara/Naraya';
@@ -376,7 +386,7 @@ export default {
             </span>
             <span v-else>
                 <span class="flex justify-content-center -mt-3">E-Management</span>
-                <PanelMenu :model="items" multiple />
+                <PanelMenu :model="items" multiple @update:activeItem="handleMenuClick"/>
             </span>
             <SplitButton :label="fullname" icon="pi pi-user" :model="splitMenu" class="absolute top-0 right-0 pt-3"
                 style="width: 200px;" @click="goToProfile()" />
