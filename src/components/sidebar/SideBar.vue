@@ -15,9 +15,9 @@ export default {
             fullname: null,
             items: [
                 {
-                    label: 'Home',
-                    icon: 'pi pi-home',
-                    to: '/',
+                label: 'Home',
+                icon: 'pi pi-home',
+                command: () => this.handleMenuClick({ path: '/' }),
                 },
                 {
                     label: this.getFormLabelCustomer(),
@@ -29,7 +29,7 @@ export default {
                             label: 'Pemasangan & Pemutusan Internet',
                             visible: this.role('mazentaAdmin') || this.role('banaraAdmin') || this.role('narayaAdmin') || this.role('superadmin'),
                             icon: 'pi pi-wifi',
-                            to: '/Form/Internet',
+                            command: () => this.handleMenuClick({ path: '/Form/Internet' }),
                             class: 'ggi-nav-item',
                         },
 
@@ -335,14 +335,7 @@ export default {
     },
     methods: {
         handleMenuClick(item) {
-            if (item.$routerLink) {
-                // If the item has a router link, use it to navigate
-                this.$router.push(item.$routerLink);
-            } else if (item.to) {
-                // If the item has a 'to' property, use it to navigate
-                this.$router.push(item.to);
-            }
-            // Add additional conditions if needed
+        this.$router.push(item.path);
         },
         getFormLabelCustomer() {
             if (this.role('superadmin')) {
@@ -386,7 +379,7 @@ export default {
             </span>
             <span v-else>
                 <span class="flex justify-content-center -mt-3">E-Management</span>
-                <PanelMenu :model="items" multiple @update:activeItem="handleMenuClick"/>
+                <PanelMenu :model="items" multiple @onNodeClick="handleMenuClick"/>
             </span>
             <SplitButton :label="fullname" icon="pi pi-user" :model="splitMenu" class="absolute top-0 right-0 pt-3"
                 style="width: 200px;" @click="goToProfile()" />
