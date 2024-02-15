@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === "production" ? "/VueDeployment/" : "/",
+  // publicPath: process.env.NODE_ENV === "production" ? "/VueDeployment/" : "/",
   // publicPath: '/VueDeployment',
   chainWebpack: config => {
     // Modify the rule for images to maintain the original file name without hash
